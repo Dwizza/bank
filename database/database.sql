@@ -22,5 +22,4 @@ CREATE TABLE BesinnessAccount(
     Fraix FLOAT,
     Account_id INT,
     FOREIGN KEY (Account_id) REFERENCES account(Id)
-    
 )
