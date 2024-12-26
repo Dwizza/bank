@@ -1,4 +1,6 @@
 <?php 
+include_once "./database/dbConnect.php";
+include_once "Account.php";
 
 class SavingsAccount extends Account{
     private $taux;
@@ -8,8 +10,8 @@ class SavingsAccount extends Account{
         $this->Balance = $Balance;
         $this->taux = $taux;
     }
-    public function ajouter(){
-        include_once "database/dbConnect.php";
+    public function ajouterS(){
+        global $conn;
         $stmt = $conn->prepare("INSERT INTO account(Numero_de_compte,Balance) VALUES (:N_C,:balance)");
         $stmt->execute([
             ":N_C" => $this->N_C,
