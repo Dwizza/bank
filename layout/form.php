@@ -1,5 +1,6 @@
 <div class="mx-auto block max-w-md rounded-lg mt-10 bg-white p-6 shadow-4 dark:bg-surface-dark">
-    <form class="flex flex-col items-center" method="POST">
+    <h1 class="text-center text-xl mb-2">Add an account</h1>
+    <form class="flex flex-col items-center" action="" method="POST">
         <div class="relative mb-3 w-full" data-twe-input-wrapper-init>
             <input type="text"
                 class="peer block min-h-[auto] w-full rounded border-0 bg-transparent px-3 py-[0.32rem] leading-[1.6] outline-none transition-all duration-200 ease-linear focus:placeholder:opacity-100 peer-focus:text-primary data-[twe-input-state-active]:placeholder:opacity-100 motion-reduce:transition-none dark:text-white dark:placeholder:text-neutral-300 dark:autofill:shadow-autofill dark:peer-focus:text-primary [&:not([data-twe-input-placeholder-active])]:placeholder:opacity-0"
@@ -65,18 +66,30 @@
         $taux = $_POST["taux"];
         $frais = $_POST["frais"];
         $retrait = $_POST["retrait"];
-        if($taux != ""){
-            $account = new SavingsAccount("$NC","$BL","$taux");
-            $account->ajouterS();
-        }
-        else if($frais != ""){
-            $account = new BusinessAccount("$NC","$BL","$frais");
-            $account->ajouterB();
-        }
-        else if($retrait != ""){
-            $account = new CurrentAccount("$NC","$BL","$retrait");
-            $account->ajouterC();
-        }
+        if($NC!=""&&$BL!=""){
+            if($taux != ""){
+                $account = new SavingsAccount("$NC","$BL","$taux");
+                $account->ajouterS();
+            }
+        }else{echo "<script>Swal.fire({
+                    position: \"center\",
+                    icon: \"error\",
+                    title: \"Fill all field !\",
+                    showConfirmButton: false,
+                    timer: 1500
+                    });</script>";}
+        if($NC!=""&&$BL!=""){
+            if($frais != ""){
+                $account = new BusinessAccount("$NC","$BL","$frais");
+                $account->ajouterB();
+            }
+        }else{echo "";}
+        if($NC!=""&&$BL!=""){
+            if($retrait != ""){
+                $account = new CurrentAccount("$NC","$BL","$retrait");
+                $account->ajouterC();
+            }
+        }else{echo "";}
     }
 ?>
 

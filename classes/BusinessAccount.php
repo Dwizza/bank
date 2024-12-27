@@ -5,7 +5,7 @@ class BusinessAccount extends Account{
     public function __construct($N_C,$Balance,$frais){
         $this->N_C = $N_C;
         $this->Balance = $Balance;
-        $this->taux = $frais;
+        $this->frais = $frais;
     }
     public function ajouterB(){
         global $conn;

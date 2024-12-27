@@ -5,7 +5,7 @@ class CurrentAccount extends Account{
     public function __construct($N_C,$Balance,$retrait){
         $this->N_C = $N_C;
         $this->Balance = $Balance;
-        $this->taux = $retrait;
+        $this->retrait = $retrait;
     }
     public function ajouterC(){
         global $conn;
