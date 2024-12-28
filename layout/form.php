@@ -83,13 +83,25 @@
                 $account = new BusinessAccount("$NC","$BL","$frais");
                 $account->ajouterB();
             }
-        }else{echo "";}
+        }else{echo "<script>Swal.fire({
+                    position: \"center\",
+                    icon: \"error\",
+                    title: \"Fill all field !\",
+                    showConfirmButton: false,
+                    timer: 1500
+                    });</script>";;}
         if($NC!=""&&$BL!=""){
             if($retrait != ""){
                 $account = new CurrentAccount("$NC","$BL","$retrait");
                 $account->ajouterC();
             }
-        }else{echo "";}
+        }else{echo "<script>Swal.fire({
+                    position: \"center\",
+                    icon: \"error\",
+                    title: \"Fill all field !\",
+                    showConfirmButton: false,
+                    timer: 1500
+                    });</script>";}
     }
 ?>
 
