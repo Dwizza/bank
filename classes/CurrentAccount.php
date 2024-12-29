@@ -21,6 +21,20 @@ class CurrentAccount extends Account{
             ":accountId"=> $lastID
         ]);
     }
+    public function Update($id){
+        global $conn;
+        $stmt = $conn->prepare("UPDATE account SET  Numero_de_compte = :new1, Balance= :new2  WHERE Id = :id");
+        $stmt->execute([
+            ':new1' =>$this->N_C,
+            ':new2' =>$this->Balance,
+            ':id' => $id
+        ]);
+        $stmt = $conn->prepare("UPDATE currentaccount SET Retrait = :new3 WHERE account_id = :id");
+        $stmt->execute([
+            ':new3' =>$this->retrait,
+            ':id' => $id
+        ]);
+    }
 
 }
 
